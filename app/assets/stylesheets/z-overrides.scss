@@ -1,0 +1,78 @@
+.mdl-layout {
+  min-height: 1200px
+}
+
+.mdl-layout--fixed-drawer>.mdl-layout__content {
+  margin-left: 240px;
+  height: 100%;
+}
+
+.page-content {
+  height: inherit;
+}
+
+span.mdl-layout-title.app-brand {
+  background-color: rgb(0, 191, 223);
+}
+
+.mdl-layout__header-row {
+  background-color: rgb(0,168,191);
+}
+nav.mdl-navigation {
+  padding-top: 0px !important;
+}
+
+a.mdl-navigation__link.top-nav {
+  border-right: 1px solid rgba(0,191,223, 1);
+  &:hover {
+    transition: background-color 0.4s ease;
+    background-color: rgba(50, 100, 123, 0.4);
+  }
+  &:first-child {
+    border-left: 1px solid rgba(0,191,223, 1);
+  }
+}
+
+.patient-profile {
+  color: rgba(255,255,255, 0.6);
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 5px;
+  font-size: 20px;
+  border: 3px solid rgba(255,255,255, 0.2);
+  &:hover {
+    transition: background-color 0.2s ease;
+    background-color: rgba(0, 168, 191, 1);
+  }
+}
+
+.patient-profile.picture {
+  background-color: rgb(48, 91, 111);
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+.red {
+  background-color: rgb(50, 100, 123) !important;
+  border-right: none !important;
+}
+
+.panel-soothing {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
+/***************************
+**************************
+*/
+.demo-card-square.mdl-card {
+  width: 250px;
+  height: 250px;
+  margin: 5px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+}

@@ -1,0 +1,2 @@
+module PatientIntakeStepsHelper
+end

@@ -1,0 +1,40 @@
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <%#= link_to "main", root_path, class: "mdl-navigation__link top-nav" %>
+        <%= link_to "New Patient Form", patient_intake_steps_path, class: "mdl-navigation__link top-nav" %>
+        <%#= link_to "activity2", activity_path, class: "top-nav mdl-badge", "data-badge" => "#{@num}" %>
+      </nav>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer red">
+    <span class="mdl-layout-title app-brand">IRIS</span>
+    <% if user_signed_in? %>
+      <nav class="mdl-navigation">
+        <div class="patient-profile picture"><%= "#{current_user.first_name} #{current_user.last_name}" %></div>
+        <div class="summary">
+          <div class="patient-profile age weight mdl-badge mdl-badge--overlap", data-badge="<%= @num %>" >Age 60 | Weight 70</div>
+          <div class="patient-profile height">Height 160</div>
+        </div>
+        <div class="patient-profile next-visit">Next Visit</div>
+        <div class="patient-profile last-visit">Last Visit</div>
+      </nav>
+    <% end %>
+  </div>
