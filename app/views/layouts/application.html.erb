@@ -16,13 +16,26 @@
     <main class="mdl-layout__content">
       <div class="page-content">
         <p>
-          Is user signed in? <%= user_signed_in? %>
+          Is user signed in? <%= user_signed_in? %> and patient is <%= calculate_age %>
         </p>
+         <% unless @conditions.blank? %>
+          <ul>
+            <p>Known Medical History</p>
+            <% @conditions.each do |condition|%>
+              <li>
+                <%= condition %>
+              </li>
+            <% end %>
+          </ul>
+         <% end %>
+
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
 
         <%#= render partial: 'shared/patient_information' %>
-        <%= yield %>
+        <div class="container">
+          <%= yield %>
+        </div>
       </div>
     </main>
     </div>

@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="col-sm-9 col-sm-offset-1">
+    <h4 class="text-center">Medical History</h4>
+    <p class="text-center">Please Check any illness or condition you have had:</p>
+    <hr>
+    <%= form_for(@medical_history, url: wizard_path) do |f| %>
+      <%= %>
+      <div class="col-sm-3 col-sm-offset-1">
+        <div class="form-group">
+          <%= f.check_box :add %>
+          <%= f.label :add, "ADD" %><br>
+          <%= f.check_box :abnormal_pap_smear %>
+          <%= f.label :abnormal_pap_smear %><br>
+          <%= f.check_box :alcoholism %>
+          <%= f.label :alcoholism %><br />
+          <%= f.check_box :allergies %>
+          <%= f.label :allergies %><br />
+          <%= f.check_box :anemia %>
+          <%= f.label :anemia %><br />
+          <%= f.check_box :anxiety %>
+          <%= f.label :anxiety %><br />
+          <%= f.check_box :arthritis %>
+          <%= f.label :arthritis %><br />
+          <%= f.check_box :asthma %>
+          <%= f.label :asthma %><br />
+          <%= f.check_box :back_pain_chronic %>
+          <%= f.label :back_pain_chronic %><br />
+          <%= f.check_box :breast_cancer %>
+          <%= f.label :breast_cancer %><br />
+          <%= f.check_box :colon_polyp %>
+          <%= f.label :colon_polyp %><br />
+          <%= f.check_box :depression_current %>
+          <%= f.label :depression_current %><br />
+          <%= f.check_box :depression_past %>
+          <%= f.label :depression_past %><br />
+          <%= f.check_box :diabetes_type_1 %>
+          <%= f.label :diabetes_type_1 %><br />
+          <%= f.check_box :diabetes_type_2 %>
+          <%= f.label :diabetes_type_2 %><br />
+          <%= f.check_box :diabetes_gestational %>
+          <%= f.label :diabetes_gestational %><br />
+          <%= f.check_box :diverticular_disease %>
+          <%= f.label :diverticular_disease %><br />
+          <%= f.check_box :eczema %>
+          <%= f.label :eczema %><br />
+          <%= f.check_box :endometriosis %>
+          <%= f.label :endometriosis %><br />
+          <%= f.check_box :erectile_dysfunction %>
+          <%= f.label :erectile_dysfunction %><br />
+          <%= f.check_box :fibromyalgia %>
+          <%= f.label :fibromyalgia %><br />
+        </div>
+      </div>
+      <div class="col-sm-3 col-sm-offset-1">
+        <div class="form-group">
+          <%= f.check_box :genital_herpes %>
+          <%= f.label :genital_herpes %><br />
+          <%= f.check_box :heart_desease %>
+          <%= f.label :heart_desease %><br />
+          <%= f.check_box :glaucoma %>
+          <%= f.label :glaucoma %><br />
+          <%= f.check_box :hemorrhoids %>
+          <%= f.label :hemorrhoids %><br />
+          <%= f.check_box :high_cholesterol %>
+          <%= f.label :high_cholesterol %><br />
+          <%= f.check_box :high_blood_pressure %>
+          <%= f.label :high_blood_pressure %><br />
+          <%= f.check_box :irritable_bowel %>
+          <%= f.label :irritable_bowel %><br />
+          <%= f.check_box :kidney_stones %>
+          <%= f.label :kidney_stones %><br />
+          <%= f.check_box :low_thyroid %>
+          <%= f.label :low_thyroid %><br />
+          <%= f.check_box :migraine %>
+          <%= f.label :migraine %><br />
+          <%= f.check_box :obesity %>
+          <%= f.label :obesity %><br />
+          <%= f.check_box :osteoporosis %>
+          <%= f.label :osteoporosis %><br />
+          <%= f.check_box :osteopenia %>
+          <%= f.label :osteopenia %><br />
+          <%= f.check_box :postmenopausal %>
+          <%= f.label :postmenopausal %><br />
+          <%= f.check_box :prostate_enlargement %>
+          <%= f.label :prostate_enlargement %><br />
+          <%= f.check_box :reflux %>
+          <%= f.label :reflux %><br />
+          <%= f.check_box :rheumatoid_arthritis %>
+          <%= f.label :rheumatoid_arthritis %><br />
+          <%= f.check_box :seizure_disorder %>
+          <%= f.label :seizure_disorder %><br />
+          <%= f.check_box :sleep_apnea %>
+          <%= f.label :sleep_apnea %><br />
+          <%= f.check_box :stroke %>
+          <%= f.label :stroke %><br />
+          <%= f.check_box :tobacco_use %>
+          <%= f.label :tobacco_use %><br />
+        </div>
+      </div>
+      <div class="col-sm-3 col-sm-offset-1">
+        <h5>Surgery</h5>
+        <hr>
+        <div class="form-group">
+          <%= f.check_box :appendix %>
+          <%= f.label :appendix %><br />
+          <%= f.check_box :ear_tubes %>
+          <%= f.label :ear_tubes %><br />
+          <%= f.check_box :gall_bladder %>
+          <%= f.label :gall_bladder %><br />
+          <%= f.check_box :heart_bypass %>
+          <%= f.label :heart_bypass %><br />
+          <%= f.check_box :hernia_repair %>
+          <%= f.label :hernia_repair %><br />
+          <%= f.check_box :knee_acl %>
+          <%= f.label :knee_acl %><br />
+          <%= f.check_box :knee_other %>
+          <%= f.label :knee_other %><br />
+          <%= f.check_box :lumbar_back %>
+          <%= f.label :lumbar_back %><br />
+          <%= f.check_box :neck_c_spine %>
+          <%= f.label :neck_c_spine %><br />
+          <%= f.check_box :shoulder %>
+          <%= f.label :shoulder %><br />
+          <%= f.check_box :tonsils %>
+          <%= f.label :tonsils %><br />
+        </div>
+        <h5>Woman</h5>
+        <hr>
+        <div class="form-group">
+          <%= f.check_box :breast_augmentation %>
+          <%= f.label :breast_augmentation %><br />
+          <%= f.check_box :c_section %>
+          <%= f.label :c_section %><br />
+          <%= f.check_box :hysterectomy %>
+          <%= f.label :hysterectomy %><br />
+          <%= f.check_box :tubal_ligation %>
+          <%= f.label :tubal_ligation %><br />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit 'Continue', class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+      </div>
+
+    <% end %>
+
+
+  </div>
+</div>
+
+
+
+
+

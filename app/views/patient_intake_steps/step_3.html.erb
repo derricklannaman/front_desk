@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-3">
+    <h4 class="text-center">Demographic Information</h4>
+    <hr>
+    <%= form_for(@user, url: wizard_path) do |f|%>
+      <div class="form-group col-md-12">
+        <%= f.radio_button :gender, 'male' %>
+        <%= f.label :gender_male, 'Male' %>
+        <%= f.radio_button :gender, 'female' %>
+        <%= f.label :gender_female, 'Female' %>
+      </div>
+
+      <div class="form-group col-md-12">
+          <%= f.label :date_of_birth %> <br />
+          <%= date_select("user", "birthday", start_year: Date.today.year, end_year: Date.today.year - 100) %>
+      </div>
+
+      <div class="form-group col-md-12">
+        <%= f.label :social_security_number %>
+        <%= f.text_field :social_security_number1, class: 'form-control' %>
+        <%= f.text_field :social_security_number2, class: 'form-control' %>
+        <%= f.text_field :social_security_number3, class: 'form-control' %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.label :race %><br />
+          <%= f.select "race", options_for_select(@race), prompt: 'Select One' %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.label :preferred_language %>
+        <%= f.text_field :preferred_language, class: 'form-control'%>
+      </div>
+
+      <div class="form-group col-md-12">
+        <%= f.label :employer %>
+        <%= f.text_field :employer, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-12">
+        <%= f.label :relationship_status %><br />
+          <%= f.label :relationship_status, 'Married' %>
+          <%= f.radio_button :relationship_status, "Married" %>
+          <%= f.label :relationship_status, 'Single' %>
+          <%= f.radio_button :relationship_status, 'Single' %>
+          <%= f.label :relationship_status, 'Divorced' %>
+          <%= f.radio_button :relationship_status, 'Divorced' %>
+      </div>
+
+      <div class="form-group col-md-12">
+        <%= f.submit 'Continue', class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+      </div>
+    <% end %>

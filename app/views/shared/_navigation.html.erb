@@ -4,10 +4,17 @@
             mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
+      <span>Patient Empowerment Platform</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
         <%#= link_to "main", root_path, class: "mdl-navigation__link top-nav" %>
-        <%= link_to "New Patient Form", patient_intake_steps_path, class: "mdl-navigation__link top-nav" %>
+        <% if user_signed_in? %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "mdl-navigation__link top-nav" %>
+        <% else %>
+          <%= link_to "New Patient Form", patient_intake_steps_path, class: "mdl-navigation__link top-nav" %>
+          <%= link_to "Sign In", new_user_session_path, class: "mdl-navigation__link top-nav" %>
+        <% end %>
+
         <%#= link_to "activity2", activity_path, class: "top-nav mdl-badge", "data-badge" => "#{@num}" %>
       </nav>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
@@ -25,12 +32,13 @@
     </div>
   </header>
   <div class="mdl-layout__drawer red">
-    <span class="mdl-layout-title app-brand">IRIS</span>
+    <span class="mdl-layout-title app-brand">FRONTDESK</span>
     <% if user_signed_in? %>
       <nav class="mdl-navigation">
+
         <div class="patient-profile picture"><%= "#{current_user.first_name} #{current_user.last_name}" %></div>
         <div class="summary">
-          <div class="patient-profile age weight mdl-badge mdl-badge--overlap", data-badge="<%= @num %>" >Age 60 | Weight 70</div>
+          <div class="patient-profile age weight mdl-badge mdl-badge--overlap", data-badge="<%= @num %>" >Age <%= calculate_age unless current_user.blank? || current_user.birthday.blank? %> | Weight 70</div>
           <div class="patient-profile height">Height 160</div>
         </div>
         <div class="patient-profile next-visit">Next Visit</div>

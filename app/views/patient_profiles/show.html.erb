@@ -1,4 +1,80 @@
 <h3>Patient Profile</h3>
-<%= current_user.first_name %>
+
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Address2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.first_name %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.last_name %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.address %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.address2 %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.city %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.state %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.zip %></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Social Security #</th>
+      <th>Primary Phone</th>
+      <th>Secondary Phone</th>
+      <th>Contact first by</th>
+      <th>Preferred Language</th>
+      <th>Birthday</th>
+      <!-- <th>Relationship Status</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= "#{current_user.social_security_number1}-#{current_user.social_security_number2}-#{current_user.social_security_number3}" %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= "#{number_to_phone(current_user.primary_phone)}(#{current_user.primary_phone_type})"%></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= "#{number_to_phone(current_user.secondary_phone)}(#{current_user.secondary_phone_type})"%></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.contact_method %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.preferred_language %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.birthday%></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Race</th>
+      <th>Employer</th>
+      <th>Relationship Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.race %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.employer %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= current_user.relationship_status %></td>
+    </tr>
+  </tbody>
+</table>
+<!--
 
 
+
+                  :employer,
+                    :relationship_status, :race
+
+
+
+
+
+
+ -->
