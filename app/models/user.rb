@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :medical_history, dependent: :destroy
+  has_many :parents, dependent: :destroy
 end

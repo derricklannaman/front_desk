@@ -3,14 +3,14 @@
     <h4 class="text-center">Basic Information</h4>
     <hr>
     <%= form_for(@user, url: wizard_path) do |f|%>
-      <div class="form-group col-md-12">
-        <p>Patient is:</p>
-        <%= f.label :is_policy_holder?, "Policy Holder" %>
-        <%= f.radio_button :is_policy_holder?, "policy holder" %><br>
+      <!-- <div class="form-group col-md-12"> -->
+        <!-- <p>Patient is:</p> -->
+        <%#= f.label :is_policy_holder?, "Policy Holder" %>
+        <%#= f.radio_button :is_policy_holder?, "policy holder" %><br>
 
-        <%= f.label :is_policy_holder?, "Responsible Party" %>
-        <%= f.radio_button :is_policy_holder?, "Responsible Party" %>
-      </div>
+        <%#= f.label :is_policy_holder?, "Responsible Party" %>
+        <%#= f.radio_button :is_policy_holder?, "Responsible Party" %>
+      <!-- </div> -->
 
       <div class="form-group col-md-12">
         <%= f.label :first_name %><br />
@@ -43,6 +43,12 @@
         <%= f.label :zip %>
         <%= f.text_field :zip, class: 'form-control'  %>
       </div>
+
+      <div class="form-group col-md-12">
+        <%= f.label :date_of_birth %> <br />
+        <%= date_select("user", "birthday", start_year: Date.today.year, end_year: Date.today.year - 100) %>
+      </div>
+
       <div class="form-group col-md-12">
         <%= f.submit 'Continue', class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
       </div>

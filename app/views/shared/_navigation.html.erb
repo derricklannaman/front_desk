@@ -1,21 +1,26 @@
+<!-- TOP NAV BAR -->
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span>Patient Empowerment Platform</span>
+      <!-- <span class="organization-title">Lannaman Health </span> -->
+      <span class="platform-title">Patient Empowerment Platform</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
-        <%#= link_to "main", root_path, class: "mdl-navigation__link top-nav" %>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.intake_complete %>
+          <%= link_to 'Dashboard', dashboard_path, class: "mdl-navigation__link top-nav", data: {turbolinks: "false"} unless current_page? '/dashboard' %>
+          <%= link_to 'Prescriptions', prescription_path(current_user), class: "mdl-navigation__link top-nav", data: {turbolinks: "false"} %>
+          <%= link_to 'Goals', "#", class: "mdl-navigation__link top-nav" %>
+          <%= link_to 'Profile', patient_profile_path(current_user), class: "mdl-navigation__link top-nav", data: {turbolinks: "false"} if current_user.intake_complete %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "mdl-navigation__link top-nav" %>
+        <% elsif user_signed_in? %>
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "mdl-navigation__link top-nav" %>
         <% else %>
-          <%= link_to "New Patient Form", patient_intake_steps_path, class: "mdl-navigation__link top-nav" %>
-          <%= link_to "Sign In", new_user_session_path, class: "mdl-navigation__link top-nav" %>
+          <%= link_to "New Patient Form", patient_intake_steps_path, class: "mdl-navigation__link top-nav", data: {turbolinks: "false"}  %>
+          <%= link_to "Sign In", new_user_session_path, class: "mdl-navigation__link top-nav", data: {turbolinks: "false"} %>
         <% end %>
-
-        <%#= link_to "activity2", activity_path, class: "top-nav mdl-badge", "data-badge" => "#{@num}" %>
       </nav>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
@@ -31,18 +36,26 @@
       </div>
     </div>
   </header>
-  <div class="mdl-layout__drawer red">
-    <span class="mdl-layout-title app-brand">FRONTDESK</span>
-    <% if user_signed_in? %>
-      <nav class="mdl-navigation">
+  <!-- SIDE PANEL -->
+  <%# cache do %>
+    <div class="mdl-layout__drawer red">
+      <span class="mdl-layout-title app-brand">FRONTDESK</span>
+      <% if user_signed_in? %>
+        <nav class="mdl-navigation">
 
-        <div class="patient-profile picture"><%= "#{current_user.first_name} #{current_user.last_name}" %></div>
-        <div class="summary">
-          <div class="patient-profile age weight mdl-badge mdl-badge--overlap", data-badge="<%= @num %>" >Age <%= calculate_age unless current_user.blank? || current_user.birthday.blank? %> | Weight 70</div>
-          <div class="patient-profile height">Height 160</div>
-        </div>
-        <div class="patient-profile next-visit">Next Visit</div>
-        <div class="patient-profile last-visit">Last Visit</div>
-      </nav>
-    <% end %>
-  </div>
+          <div class="patient-profile picture"><%= "#{current_user.first_name} #{current_user.last_name}" if current_user.last_name.present? %></div>
+          <!-- <div class="summary"> -->
+          <% unless current_user.blank? || current_user.birthday.blank? %>
+            <div class="patient-profile age weight" >Age <%= calculate_age %></div>
+          <% end %>
+          <% if current_user.intake_complete %>
+            <!-- </div> -->
+            <div class="patient-profile height">Height </div>
+            <div class="patient-profile next-visit">Next Visit</div>
+            <div class="patient-profile last-visit">Last Visit</div>
+          <% end %>
+          </nav>
+
+      <% end %>
+    </div>
+  <%# end %>

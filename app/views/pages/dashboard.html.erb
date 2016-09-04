@@ -1,19 +1,36 @@
 <h3>Patient Dashboard</h3>
-<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-  <div width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <h4>container 1</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!</p>
+<div class="demo-charts mdl-cell mdl-cell--12-col mdl-grid">
+  <div viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop action-panel">
+    <%= link_to interactive_result_path(current_user), data: {turbolinks: "false"} do %>
+      <div class="inner-action-panel">
+        <span class="mdl-badge" data-badge="1">Message</span>
+        <h4 class="inner-action-name">your health</h4>
+        <i class="fa fa-medkit dashboard" aria-hidden="true"></i>
+      </div>
+    <% end %>
   </div>
-  <div width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <h4>container 2</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!</p>
+
+  <div viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop action-panel">
+    <div class="inner-action-panel">
+      <h4 class="inner-action-name">Contact office</h4>
+      <i class="fa fa-comment-o dashboard" aria-hidden="true"></i>
+    </div>
   </div>
-  <div width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <h4>container 3</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!</p>
+
+  <div viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop action-panel">
+    <div class="inner-action-panel">
+      <h4 class="inner-action-name">Condition Alerts</h4>
+      <i class="fa fa-flag-o dashboard" aria-hidden="true"></i>
+    </div>
   </div>
-  <div width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-    <h4>container 4</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi at sapiente, molestiae similique, nisi in, fuga quisquam reiciendis quas voluptatem exercitationem, rerum vel. Quod, ipsum cupiditate ad repudiandae sapiente architecto!</p>
+
+  <div viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop action-panel">
+    <%= link_to goal_path(current_user), data: {turbolinks: "false"} do %>
+      <div class="inner-action-panel">
+        <h4 class="inner-action-name">Goals Manager</h4>
+        <i class="fa fa-check-circle-o fa-4" aria-hidden="true"></i>
+      </div>
+    <% end %>
   </div>
+
 </div>

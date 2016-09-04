@@ -13,5 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-image: radial-gradient(at center, rgb(255, 255, 255) 0%, rgb(51, 64, 77) 100%);
+  /*background-repeat: no-repeat;*/
+  background-size: cover;
+
+}
+
+
+
+iframe {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+
 @import "bootstrap";
 @import "bootstrap-sprockets";

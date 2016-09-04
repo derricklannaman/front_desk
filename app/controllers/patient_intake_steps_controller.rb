@@ -10,7 +10,9 @@ class PatientIntakeStepsController < ApplicationController
     @race = ['White', 'African-American', 'Asian', 'American Indian', 'Other']
     if params[:id] == "step_4"
       @medical_history = MedicalHistory.create(user_id: @user.id)
-
+      render_wizard
+    elsif params[:id] == "step_2"
+      prepopulate_parent_information #if from_guardian_form?
       render_wizard
     elsif params[:id] == "wicked_finish"
       @user.intake_complete = true
@@ -23,6 +25,10 @@ class PatientIntakeStepsController < ApplicationController
   end
 
   def update
+    if from_guardian_form?
+      update_parent
+      redirect_to('/patient_intake_steps/step_3') and return
+    end
     @user = current_user
     if params[:id] == "step_4"
       selected_conditions = params[:medical_history].keep_if { |key, value| value == '1' }.keys
@@ -32,11 +38,7 @@ class PatientIntakeStepsController < ApplicationController
       current_user.medical_history.save!
       render_wizard @user and return
     end
-    if params[:id] == "step_3"
-      birthday_params = params[:user]['birthday(1i)'] + '-' + params[:user]['birthday(2i)'] + '-' + params[:user]['birthday(3i)']
-      @user.birthday = birthday_params.to_time.strftime("%m/%d/%Y")
-      @user.save!
-    end
+    calculate_birthday
 
     @user.update(user_params)
     render_wizard @user
@@ -44,15 +46,39 @@ class PatientIntakeStepsController < ApplicationController
 
   private
 
-    def check_current_user
+    def prepopulate_parent_information
+      @parent = Parent.create(user_id: @user.id, address: current_user.address,
+                              city: current_user.city, state: current_user.state,
+                              zip: current_user.zip)
+      @parent.save!
+    end
 
+    def update_parent
+      parent = Parent.find(params[:guardian_form])
+      parent.update(parent_params)
+    end
+
+    def from_guardian_form?
+      params["guardian_form"].present?
+    end
+
+    def calculate_birthday
+      return if params[:user].blank?
+      if params[:user]['birthday(1i)'].present?
+        birthday_params = params[:user]['birthday(1i)'] + '-' + params[:user]['birthday(2i)'] + '-' + params[:user]['birthday(3i)']
+        @user.birthday = birthday_params.to_time.strftime("%m/%d/%Y")
+        @user.save!
+      end
+    end
+
+    def check_current_user
       if params[:id] == 'step_1' && current_user.blank?
         redirect_to new_user_registration_path
       end
     end
 
     def finish_wizard_path
-      redirect_to patient_profile_path
+      redirect_to dashboard_path
     end
 
     def user_params
@@ -62,6 +88,10 @@ class PatientIntakeStepsController < ApplicationController
                     :secondary_phone, :contact_method, :social_security_number2,
                     :social_security_number3, :preferred_language, :employer,
                     :relationship_status, :race, :intake_complete)
+    end
+
+    def parent_params
+      params.require(:parent).permit(:first_name, :last_name, :address, :city, :state, :zip)
     end
 
 end

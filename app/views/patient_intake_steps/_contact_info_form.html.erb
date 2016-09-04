@@ -1,0 +1,45 @@
+<h4 class="text-center">Contact Information</h4>
+<hr>
+<%= form_for(@user, url: wizard_path) do |f|%>
+  <div class="form-group col-md-12">
+    <%= f.label :primary_phone %>
+    <%= f.telephone_field :primary_phone, autofocus: true, class: 'form-control' %>
+    <%= radio_button_tag :primary_phone_type, 'Cell' %>
+    <%= f.label :primary_phone_type, 'Cell' %>
+    <%= radio_button_tag :primary_phone_type, 'Home' %>
+    <%= f.label :primary_phone_type, 'Home' %>
+    <%= radio_button_tag :primary_phone_type, 'Work' %>
+    <%= f.label :primary_phone_type, 'Work' %>
+  </div>
+
+  <div class="form-group col-md-12">
+    <%= f.label :secondary_phone %>
+    <%= f.telephone_field :secondary_phone, autofocus: false, class: 'form-control' %>
+    <%= radio_button_tag :secondary_phone_type, 'Cell' %>
+    <%= f.label :secondary_phone_type, 'Cell' %>
+    <%= radio_button_tag :secondary_phone_type, 'Home' %>
+    <%= f.label :secondary_phone_type, 'Home' %>
+    <%= radio_button_tag :secondary_phone_type, 'Work' %>
+    <%= f.label :secondary_phone_type, 'Work' %>
+  </div>
+
+  <div class="form-group col-md-12">
+    <%= f.label :email, 'Email' %>
+    <%= email_field(:user, :email, class: 'form-control') %>
+  </div>
+
+  <div class="form-group col-md-12">
+    <p>( Preferred Method of Contact )</p>
+    <%= f.label :contact_method, 'Cell' %>
+    <%= radio_button_tag :contact_method, 'Cell' %>
+    <%= f.label :contact_method, 'Home' %>
+    <%= radio_button_tag :contact_method, 'Home' %>
+    <%= f.label :contact_method, 'Work'%>
+    <%= radio_button_tag :contact_method, 'Work' %>
+    <%= f.label :contact_method, 'Email' %>
+    <%= radio_button_tag :contact_method, 'Email' %>
+  </div>
+  <div class="form-group col-md-12">
+    <%= f.submit 'Continue', class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+  </div>
+<% end %>

@@ -1,10 +1,22 @@
 .mdl-layout {
-  min-height: 1200px
+  height: 100vh;
+}
+
+a {
+  /*color: #337ab7 !important;*/
+  text-decoration: none !important;
 }
 
 .mdl-layout--fixed-drawer>.mdl-layout__content {
   margin-left: 240px;
-  height: 100%;
+  /*height: 100vh;*/
+  height: inherit;
+}
+span.organization-title {
+  font-size: 1.5em;
+}
+span.platform-title {
+  font-size: 1.5em;
 }
 
 .page-content {
@@ -13,6 +25,11 @@
 
 span.mdl-layout-title.app-brand {
   background-color: rgb(0, 191, 223);
+  color: #FFF;
+  text-shadow: 0px 0px 1px #000;
+  font-size: 25px;
+  text-align: center;
+  padding-left: 0px;
 }
 
 .mdl-layout__header-row {
@@ -31,6 +48,14 @@ a.mdl-navigation__link.top-nav {
   &:first-child {
     border-left: 1px solid rgba(0,191,223, 1);
   }
+}
+
+h4.interactive {
+  z-index: 1;
+  position: fixed;
+  top: 40px;
+  text-align: center;
+  left: calc(100% - 75%);
 }
 
 .patient-profile {
@@ -62,22 +87,84 @@ a.mdl-navigation__link.top-nav {
   padding: 10px;
 }
 
+.action-panel {
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #999;
+  &:hover {
+    transition: background-color 0.4s ease;
+    background-color: rgba(255, 255, 255, .7);
+  }
+
+}
+
+.inner-action-panel {
+  width: calc(100% - 10%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  height: calc(100% - 10%);
+  position: relative;
+  top: 10px;
+  left: 5%;
+  cursor: pointer;
+  border-radius: 20px;
+  text-align: center;
+  /*box-shadow: inset 0px 0px 10px #FFF;*/
+/*  &:hover {
+    transition: background-color 0.4s ease;
+    background-color: rgba(50, 100, 123, 0.4);
+  }*/
+  background-image: radial-gradient(at center, rgb(255, 255, 255) 0%, rgb(51, 64, 77) 200%);
+}
+
+span.mdl-badge {
+  left: 50px;
+  color: #555;
+  text-decoration: none !important;
+}
+
+.mdl-badge[data-badge]:after {
+  background: red !important;
+}
+
+
 .form-group {
-    margin-bottom: 15px;
-    width: 200px;
-    /*border: 1px solid red;*/
+  margin-bottom: 15px;
+  width: 200px;
+}
+
+h4.inner-action-name {
+  text-transform: capitalize;
+  color: #555;
+  letter-spacing: 1px;
 }
 
 /***************************
+FONT AWESOME
 **************************
 */
-.demo-card-square.mdl-card {
-  width: 250px;
-  height: 250px;
-  margin: 5px;
+
+i.fa.fa-check-circle-o.fa-4 {
+  font-size: 7em;
+  color: rgba(254, 184, 52, 1);
 }
-.demo-card-square > .mdl-card__title {
-  color: #fff;
-  background:
-    url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+
+i.fa.fa-flag-o.dashboard {
+  font-size: 7em;
+  color: rgba(255, 0, 0, 0.7);
 }
+
+i.fa.fa-medkit.dashboard {
+  font-size: 7em;
+  color: rgba(60, 184, 76, 1);
+}
+
+i.fa.fa-comment-o.dashboard {
+  font-size: 7em;
+  color: rgba(0, 191, 223, 1);
+}
+
+
+
+
